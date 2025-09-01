@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Love of My Life 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(to bottom, #ffe6f0, #fff0f5);
+    color: #333;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Title Section with side images */
+  header {
+    height: 100vh;
+    display:flex; flex-direction:row; justify-content:center; align-items:center;
+    position: relative;
+    text-align:center;
+    gap:20px;
+  }
+  header img { width:150px; border-radius:50%; box-shadow: 0 10px 20px rgba(255,77,166,0.5); }
+  header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size:3.5em;
+    color:#ff4da6;
+    text-shadow:2px 2px 5px #fff;
+    max-width:400px;
+  }
+
+  section { padding:60px 20px; text-align:center; position:relative; }
+  section h2 { font-family:'Pacifico', cursive; font-size:2.5em; color:#ff4da6; margin-bottom:20px; }
+  p { font-size:1.5em; margin:20px auto; max-width:700px; opacity:0; transform: translateY(30px); transition: all 1s ease-in-out; }
+  p.show { opacity:1; transform: translateY(0); }
+
+  /* Gallery Polaroids */
+  .gallery { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:30px; }
+  .gallery img {
+    width:200px;
+    border:10px solid #fff;
+    border-radius:10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transform: rotate(calc(-5deg + 10 * var(--i)));
+    transition: transform 0.3s;
+  }
+  .gallery img:hover { transform: rotate(0deg) scale(1.1); }
+
+  /* Music Button */
+  .music-btn { padding:12px 25px; font-size:1.2em; border:none; border-radius:10px; background:#ff7eb9; color:white; cursor:pointer; margin-top:20px; }
+  .music-btn:hover { transform: scale(1.1); }
+
+  /* Final message */
+  .final-message { font-size:1.8em; color:#ff4da6; margin-top:30px; opacity:0; transition: opacity 2s; }
+  .final-message.show { opacity:1; }
+
+  /* Floating Hearts */
+  .floating-heart {
+    position:absolute; width:30px; height:30px;
+    background: url('heart.png') no-repeat center/contain;
+    pointer-events:none;
+    animation:float linear infinite;
+  }
+  @keyframes float { 
+    0% { transform: translateY(0) translateX(0); opacity:1; } 
+    100% { transform: translateY(-900px) translateX(50px); opacity:0; } 
+  }
+
+  footer { text-align:center; padding:30px 10px; font-size:1.2em; color:#ff4da6; }
+
+  @media(max-width:768px){
+    header { flex-direction:column; gap:20px; }
+    header img { width:120px; }
+    header h1 { font-size:2.5em; }
+    section h2 { font-size:2em; }
+    .gallery img { width:150px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="herphoto-left.jpg" alt="Her Photo Left">
+  <h1>The Love of My Life 💖</h1>
+  <img src="herphoto-right.jpg" alt="Her Photo Right">
+</header>
+
+<section class="opening-message">
+  <h2>My Sweet Message 💌</h2>
+  <p>You are the light of my life, my inspiration, and my happiest thought every day. I love you endlessly ❤️</p>
+</section>
+
+<section class="vows">
+  <h2>My Vows 🌸</h2>
+  <p>I promise to love you, support you, and stand by your side through every moment, no matter the distance or challenges. 💖</p>
+</section>
+
+<section class="gallery-section">
+  <h2>Our Gallery 📸</h2>
+  <div class="gallery">
+    <img src="herphoto1.jpg" alt="Her Photo 1" style="--i:0;">
+    <img src="herphoto2.jpg" alt="Her Photo 2" style="--i:1;">
+    <img src="herphoto3.jpg" alt="Her Photo 3" style="--i:2;">
+    <img src="herphoto4.jpg" alt="Her Photo 4" style="--i:3;">
+  </div>
+</section>
+
+<section class="compliment-message">
+  <h2>To My Love 🌷</h2>
+  <p>You are beautiful, kind, and the most amazing person I know. I promise to always cherish and support you. You are my everything ❤️</p>
+</section>
+
+<section class="music-section">
+  <h2>Our Song 🎵</h2>
+  <button class="music-btn" onclick="playMusic()">Play the Song That Reminds Me of You</button>
+  <audio id="music" src="iris.mp3"></audio>
+</section>
+
+<section class="final-message-section">
+  <h2>A Special Note 💕</h2>
+  <p class="final-message" id="finalMessage">Made with love, from your future husband ❤️</p>
+</section>
+
+<footer>Forever yours 💗</footer>
+
+<script>
+  // Music play
+  function playMusic(){ document.getElementById('music').play(); }
+
+  // Floating hearts effect
+  function createHeart(){
+    const heart = document.createElement('div');
+    heart.classList.add('floating-heart');
+    heart.style.left = Math.random()*100 + 'vw';
+    heart.style.width = heart.style.height = (20 + Math.random()*20) + 'px';
+    heart.style.animationDuration = (5 + Math.random()*5) + 's';
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),10000);
+  }
+  setInterval(createHeart, 500);
+
+  // Scroll fade-in
+  const paragraphs = document.querySelectorAll('section p');
+  window.addEventListener('scroll', ()=>{
+    paragraphs.forEach(p=>{
+      const rect = p.getBoundingClientRect();
+      if(rect.top < window.innerHeight - 50){ p.classList.add('show'); }
+    });
+  });
+
+  // Show final message
+  const finalMessage = document.getElementById('finalMessage');
+  window.addEventListener('scroll', ()=>{
+    const rect = finalMessage.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 50){ finalMessage.classList.add('show'); }
+  });
+</script>
+
+</body>
+</html>
