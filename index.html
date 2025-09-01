@@ -58,16 +58,24 @@
   .final-message { font-size:1.8em; color:#ff4da6; margin-top:30px; opacity:0; transition: opacity 2s; }
   .final-message.show { opacity:1; }
 
-  /* Floating Hearts */
-  .floating-heart {
-    position:absolute; width:30px; height:30px;
-    background: url('heart.png') no-repeat center/contain;
-    pointer-events:none;
-    animation:float linear infinite;
+ /* Floating Hearts */
+.floating-heart {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: url('heart.png') no-repeat center/contain;
+  pointer-events: none;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
   }
-  @keyframes float { 
-    0% { transform: translateY(0) translateX(0); opacity:1; } 
-    100% { transform: translateY(-900px) translateX(50px); opacity:0; } 
+  100% {
+    transform: translateY(-900px) translateX(50px);
+    opacity: 0;
   }
 
   footer { text-align:center; padding:30px 10px; font-size:1.2em; color:#ff4da6; }
@@ -164,6 +172,7 @@
 
 </body>
 </html>
+
 
 
 
